@@ -20,7 +20,7 @@ public:
 	void RenderClear();
 	void RenderImage(Image* image, int x, int y, float angle);
 	void RenderPresent();
-	void CheckEvent(GameState* obj, bool (GameState::* f)(int));
+	void CheckEvent(GameState* obj, bool (GameState::* f)(int),bool (GameState::* mouse)(int x,int y,int button));
 	void DrawRect(int x, int y, int w, int h);
 private:
 	void RenderTexture(Image* image, int x, int y, double a);

@@ -7,6 +7,7 @@ void Image::LoadImage(std::string name)
 	SDL_Surface* loadedSurface = IMG_Load(name.c_str());
 	w = loadedSurface->w;
 	h = loadedSurface->h;
+
 	image = SDL_CreateTextureFromSurface(Platform::renderer, loadedSurface);
 }
 

@@ -19,7 +19,7 @@ void GameStateManager::GameLoop()
 			if (states.size() == 0)
 				throw std::exception("Error");
 			auto state = states.top();
-			platform->CheckEvent(state, &GameState::Input);
+			platform->CheckEvent(state, &GameState::Input, &GameState::InputMouse);
 			state->Update();
 			state->Draw();
 

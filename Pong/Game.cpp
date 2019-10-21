@@ -20,3 +20,8 @@ void Game::Close() {
 bool Game::Input(int) {
 	return false;
 }
+
+bool Game::InputMouse(int x, int y, int button)
+{
+	return false;
+}
