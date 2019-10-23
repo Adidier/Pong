@@ -8,6 +8,8 @@ class Player
 		Image *image;
 		int x { 0 };
 		int y { 0 };
+		int w{ 0 };
+		int h{ 0 };
 		float rot { 0 };
 		std::string pathImage;
 		Platform* platform;
@@ -15,6 +17,7 @@ class Player
 		Player(Platform* platform,std::string pathImage, int x,int y, float rot);
 		void init();
 		void draw();
-		void update(int key);
+		void input(int key,int up,int down);
+		void getSizePostion(int &w, int &h, int &x, int &y);
 };
 

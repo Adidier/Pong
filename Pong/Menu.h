@@ -12,6 +12,7 @@ class Menu : public GameState
 		Image* back;
 		Platform* platform;
 		Player *player1;
+		Player* player2;
 		Ball* ball;
 	public:
 		virtual void Init(Platform*, GameStateManager*) override;

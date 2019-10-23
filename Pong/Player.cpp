@@ -14,6 +14,8 @@ void Player::init()
 	image = new Image();
 	image->LoadImage(pathImage);
 	image->GetTexture();
+	w = image->GetWidth();
+	h = image->GetHeight();
 }
 
 void Player::draw()
@@ -21,13 +23,21 @@ void Player::draw()
 	platform->RenderImage(image, x, y, rot);
 }
 
-void Player::update(int key)
+void Player::getSizePostion(int& w, int& h, int& x, int& y)
 {
-	if (key == 'q' || key == 'Q')
+	w = this->w;
+	h = this->h;
+	x = this->x;
+	y = this->y;
+}
+
+void Player::input(int key, int up, int down)
+{
+	if (key == up || key == up-32)
 	{
 		y-=3;
 	}
-	else if (key == 'a' || key == 'A')
+	else if (key == down || key == down-32)
 	{
 		y+=3;
 	}
