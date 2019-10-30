@@ -22,11 +22,19 @@ void Menu::Draw() {
 	player1->draw();
 	player2->draw();
 	ball->draw();
+
+	if (ballPractica != nullptr) {
+		ballPractica->draw();
+	}
 	platform->RenderPresent();
+
 }
 
 void Menu::Update() {
 	ball->update(player1,player2);
+	if (ballPractica != nullptr) {
+		ballPractica->update(player1, player2);
+	}
 }
 
 void Menu::Close() {
@@ -38,8 +46,20 @@ bool Menu::Input(int key) {
 	return false;
 }
 
-bool Menu::InputMouse(int x, int y, int button)
+bool Menu::InputMouse(int x, int y, int button,int state)
 {
-	
+	if (mouseButtonLeftState == false && button == 1 && state == 1)
+	{
+		mouseButtonLeftState = true;
+	}
+	else if (mouseButtonLeftState==true && button == 1 && state == 2)
+	{
+		if (ballPractica == nullptr) {
+			ballPractica = new Ball(platform, "ball.png", 300, 200, 0);
+			ballPractica->init();
+		}
+		mouseButtonLeftState = false;
+	}
+
 	return false;
 }

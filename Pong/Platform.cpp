@@ -78,7 +78,7 @@ Platform::~Platform()
 
 void Platform::CheckEvent(GameState* gamestate,
 						  bool (GameState::* input)(int),
-						  bool (GameState::* mouse)(int x, int y, int button))
+						  bool (GameState::* mouse)(int x, int y, int button,int state))
 {
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
@@ -86,7 +86,13 @@ void Platform::CheckEvent(GameState* gamestate,
 			(gamestate->*input)(e.key.keysym.sym);
 		}
 		if (e.type == SDL_MOUSEMOTION) {
-			(gamestate->*mouse)(e.motion.x, e.motion.y, 1);
+			(gamestate->*mouse)(e.motion.x, e.motion.y, e.button.button,0);
+		}
+		else if (e.type == SDL_MOUSEBUTTONDOWN) {
+			(gamestate->*mouse)(e.motion.x, e.motion.y, e.button.button,1);
+		}
+		else if (e.type == SDL_MOUSEBUTTONUP) {
+			(gamestate->*mouse)(e.motion.x, e.motion.y, e.button.button, 2);
 		}
 	}
 }

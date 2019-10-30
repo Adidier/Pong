@@ -14,12 +14,14 @@ class Menu : public GameState
 		Player *player1;
 		Player* player2;
 		Ball* ball;
+		Ball* ballPractica;
+		bool mouseButtonLeftState{ false };
 	public:
 		virtual void Init(Platform*, GameStateManager*) override;
 	    virtual void Draw() override;
 		virtual void Update() override;
 		virtual void Close() override;
 		virtual bool Input(int) override;
-		virtual bool InputMouse(int x, int y, int button) override;
+		virtual bool InputMouse(int x, int y, int button,int state) override;
 };
 

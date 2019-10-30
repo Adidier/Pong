@@ -21,7 +21,7 @@ bool Game::Input(int) {
 	return false;
 }
 
-bool Game::InputMouse(int x, int y, int button)
+bool Game::InputMouse(int x, int y, int button,int state)
 {
 	return false;
 }

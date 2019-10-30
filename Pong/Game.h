@@ -10,6 +10,6 @@ class Game : public GameState
 		virtual void Update() override;
 		virtual void Close() override;
 		virtual bool Input(int) override;
-		virtual bool InputMouse(int x, int y, int button) override;
+		virtual bool InputMouse(int x, int y, int button,int state) override;
 };
 

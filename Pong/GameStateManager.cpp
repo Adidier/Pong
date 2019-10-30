@@ -22,7 +22,6 @@ void GameStateManager::GameLoop()
 			platform->CheckEvent(state, &GameState::Input, &GameState::InputMouse);
 			state->Update();
 			state->Draw();
-
 		}
 		catch (...)
 		{

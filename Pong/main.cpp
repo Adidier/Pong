@@ -7,10 +7,12 @@
 
 int main(int argc, char* args[])
 {
-	GameState* gameMenu = new Menu();
+	GameState *gameMenu = new Menu();
 	GameStateManager gameManager;
 	gameManager.SetState(gameMenu);
 	gameManager.GameLoop();
+	
+		
 	return 0;
 }
 
