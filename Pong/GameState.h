@@ -1,12 +1,15 @@
 #pragma once
 
-
-class Platform;
-class GameStateManager;
-
-
-class GameState
+namespace GameEngine
 {
+
+
+	class Platform;
+	class GameStateManager;
+
+
+	class GameState
+	{
 	public:
 		virtual void Init(Platform*, GameStateManager*) = 0;
 		virtual void Draw() = 0;
@@ -14,5 +17,5 @@ class GameState
 		virtual void Close() = 0;
 		virtual bool Input(int) = 0;
 		virtual bool InputMouse(int x, int y, int button, int state) = 0;
-};
-
+	};
+}

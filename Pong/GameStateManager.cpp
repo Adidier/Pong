@@ -1,45 +1,47 @@
 #include "GameStateManager.h"
 #include <iostream>
-
-GameStateManager::GameStateManager()
+namespace GameEngine
 {
-	platform = new Platform("BlackCable");
-}
-
-GameStateManager::~GameStateManager()
-{
-}
-
-void GameStateManager::GameLoop()
-{
-	while (true)
+	GameStateManager::GameStateManager()
 	{
-		try
+		platform = new Platform("BlackCable");
+	}
+
+	GameStateManager::~GameStateManager()
+	{
+	}
+
+	void GameStateManager::GameLoop()
+	{
+		while (true)
 		{
-			if (states.size() == 0)
-				throw std::exception("Error");
-			auto state = states.top();
-			platform->CheckEvent(state, &GameState::Input, &GameState::InputMouse);
-			state->Update();
-			state->Draw();
-		}
-		catch (...)
-		{
-			std::cout << "Critical error Pong is closing";
-			break;
+			try
+			{
+				if (states.size() == 0)
+					throw std::exception("Error");
+				auto state = states.top();
+				platform->CheckEvent(state, &GameState::Input, &GameState::InputMouse);
+				state->Update();
+				state->Draw();
+			}
+			catch (...)
+			{
+				std::cout << "Critical error Pong is closing";
+				break;
+			}
 		}
 	}
-}
 
-void GameStateManager::SetState(GameState* state)
-{
-	state->Init(platform, this);
-	states.push(state);
-}
+	void GameStateManager::SetState(GameState* state)
+	{
+		state->Init(platform, this);
+		states.push(state);
+	}
 
-void GameStateManager::RealaseState()
-{
-	auto state = states.top();
-	state->Close();
-	states.pop();
+	void GameStateManager::RealaseState()
+	{
+		auto state = states.top();
+		state->Close();
+		states.pop();
+	}
 }
